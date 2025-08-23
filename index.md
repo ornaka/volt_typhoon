@@ -53,4 +53,4 @@ The attacker uses ntdsutil to create a copy of the AD database. After moving the
 
 At first I queried ntdsutil but it didn’t give the answer right away. However the events shown revealed name of the database dump, which I searched and found the answer
 
-(/images/pic3.png)
+![Result](/images/pic3.png)
