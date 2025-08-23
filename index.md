@@ -30,5 +30,27 @@ Shortly after Dean's account was compromised, the attacker created a new adminis
 
 I used the following query, which showed events containing answer to both question 1 and 2 
 
+index=main "AD*" username="dean-admin" "Password" 
+| sort -_time desc
+
 ![Events showing Deans account being compromised](/images/pic1.png)
 
+## Task 2 - Execution
+
+Volt Typhoon is known to exploit Windows Management Instrumentation Command-line (WMIC) for a range of execution techniques. They leverage WMIC for tasks such as gathering information and dumping valuable databases, allowing them to infiltrate and exploit target networks. By using "living off the land" binaries (LOLBins), they blend in with legitimate system activity, making detection more challenging.
+
+### Question 3 
+
+In an information gathering attempt, what command does the attacker run to find information about local drives on server01 & server02?
+
+Query I used: index=main sourcetype="wmic" "*server02*" OR "*server01*"
+
+![Result of the query](/images/pic2.png)
+
+### Question 4 
+
+The attacker uses ntdsutil to create a copy of the AD database. After moving the file to a web server, the attacker compresses the database. What password does the attacker set on the archive?
+
+At first I queried ntdsutil but it didn’t give the answer right away. However the events shown revealed name of the database dump, which I searched and found the answer
+
+(/images/pic3.png)
